@@ -1,30 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.wctc.rcn.date;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * This class provide the LocalDateTime custom format
- *
+ * This class provide the user to get custom dateTime format using LocalDateTime
+ * JDK 1.8 and above
  * @author Roshan, Nanayakkara rnanayakkara@my.wctc.edu
  * @version 1.00
  * @since 1.8
  */
 public class DateUtilities {
 
-    private String dateTimeStringFormat;
-    private String date;
+    private String dateTimeFormat;
 
     /**
      * Default date time format "MMM d yyyy  hh:mm a"
      */
     public DateUtilities() {
-        this.dateTimeStringFormat = "MMM d yyyy  hh:mm a";
+        this.dateTimeFormat = "MMM d yyyy  hh:mm a";
     }
     
     /**
@@ -32,35 +27,36 @@ public class DateUtilities {
      * @param dateTimeStringFormat - custom date time format can setup
      */
     public DateUtilities(String dateTimeStringFormat) {
-        this.dateTimeStringFormat = dateTimeStringFormat;
+        this.dateTimeFormat = dateTimeStringFormat;
     }
 
     /**
-     * Convert a LocalDateTime object to a formatted string
+     * Convert a LocalDateTime object to a formatted string to default format "MMM d yyyy hh:mm a"
+     * or custom format as per user specified.
      *
      * @param date
+     * @param dateTimeFormat
+     * @return 
      * @throws NullPointerException if date is null, or DateTimeException if
      * month (1 - 12), (1 - 31) date, hours (1 -24) , minutes (1 -60) values out
      * of range.
      */
-    public void convertLocalDateTimeToFormattedString(LocalDateTime date) {
-        if (date == null) {
+    public final String getFormattedLocalDateTimeToString(LocalDateTime date, String dateTimeFormat) throws NullPointerException, IllegalArgumentException{
+        if (date == null || dateTimeFormat == null) {
             throw new NullPointerException();
-        } 
-        DateTimeFormatter format = DateTimeFormatter.ofPattern(dateTimeStringFormat);
+        }
+        if (!dateTimeFormat.isEmpty()){
+            this.dateTimeFormat = dateTimeFormat;
+        }
+        DateTimeFormatter format = DateTimeFormatter.ofPattern(this.dateTimeFormat);
         String formattedStringDate = date.format(format);
-        this.date = formattedStringDate;
+        return formattedStringDate;
     }
 
-    public void setDateTimeStringFormat(String dateTimeStringFormat) {
+    public final String getDateFromDateTimeString(String dateTimeStringFormat)throws NullPointerException, IllegalArgumentException {
         if (dateTimeStringFormat == null || dateTimeStringFormat.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        this.dateTimeStringFormat = dateTimeStringFormat;
+        return dateTimeStringFormat;
     }
-
-    public String getDate() {
-        return date;
-    }
-
 }
