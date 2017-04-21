@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * This class provide the user to get custom dateTime format using LocalDateTime
+ * This class provide the managing and using LocalDateTime,
  * JDK 1.8 and above
  *
  * @author Roshan, Nanayakkara rnanayakkara@my.wctc.edu
