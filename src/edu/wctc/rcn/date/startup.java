@@ -24,11 +24,11 @@ public class startup {
         
         
         LocalDateTime startDateTime = LocalDateTime.of(2017, 04, 21, 17, 59);
-        LocalDateTime endDateTime = LocalDateTime.of(2017, 04, 21, 17, 59);
+        LocalDateTime endDateTime = LocalDateTime.of(2017, 04, 21, 19, 59);
         
         System.out.println("Number of hours between start and end :" + 
-                formatDate.getNumberOfHoursFromStartEndTime(startDateTime, endDateTime));
-        
-        
+                formatDate.getNumberOfHoursFromStartEndTime(startDateTime, endDateTime)); 
+        System.out.println("Number of Minutes between start and end :" + 
+                formatDate.getNumberOfMinutesFromStartEndTime(startDateTime, endDateTime)); 
     }  
 }

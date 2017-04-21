@@ -145,4 +145,27 @@ public class DateUtilities {
         long hours = duration.toHours();
         return hours;
     }
+    
+    public final long getNumberOfMinutesFromStartEndTime(LocalDateTime startTime, LocalDateTime endTime) throws NullPointerException {
+        if (startTime == null || endTime == null) {
+            throw new NullPointerException();
+        }
+        LocalDateTime start = LocalDateTime.now()
+                .withYear(startTime.getYear())
+                .withMonth(startTime.getMonthValue())
+                .withDayOfMonth(startTime.getDayOfMonth())
+                .withHour(startTime.getHour())
+                .withMinute(startTime.getMinute());
+        LocalDateTime end
+                = LocalDateTime.now()
+                        .withYear(endTime.getYear())
+                        .withMonth(endTime.getMonthValue())
+                        .withDayOfMonth(endTime.getDayOfMonth())
+                        .withHour(endTime.getHour())
+                        .withMinute(endTime.getMinute());
+
+        Duration duration = Duration.between(start, end);
+        long minutes = duration.toMinutes();
+        return minutes;
+    }
 }
