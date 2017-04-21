@@ -14,8 +14,21 @@ public class startup {
         DateUtilities formatDate = new DateUtilities();
         
         //LocalDateTime date = LocalDateTime.of(2017, Month.APRIL, 18, 15, 28);
-        LocalDateTime date = LocalDateTime.of(2017, 3, 30, 11, 59);
-        System.out.println("Current date/time with custom format provided by DateTimeFormatter: " + formatDate.getFormattedLocalDateTimeToString(date, ""));
-    }
-    
+        LocalDateTime date = LocalDateTime.of(2017, 04, 21, 17, 59);
+        System.out.println("Current date/time with custom format provided by "
+                + "DateTimeFormatter: " + formatDate.getFormattedLocalDateTimeToString(date, ""));
+        
+        System.out.println("Number of Days :" + formatDate.getNumberOfDaysFromNow(date));
+        System.out.println("Number of Hours :" + formatDate.getNumberOfHoursFromNow(date));
+        System.out.println("Number of Minutes :" + formatDate.getNumberOfMinutesFromNow(date));
+        
+        
+        LocalDateTime startDateTime = LocalDateTime.of(2017, 04, 21, 17, 59);
+        LocalDateTime endDateTime = LocalDateTime.of(2017, 04, 21, 17, 59);
+        
+        System.out.println("Number of hours between start and end :" + 
+                formatDate.getNumberOfHoursFromStartEndTime(startDateTime, endDateTime));
+        
+        
+    }  
 }
